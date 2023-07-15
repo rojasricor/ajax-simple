@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AJAX Simple</title>
+    </head>
+    <body>
+        <button onclick="sendRequest()">Send AJAX Request</button>
+
+        <h1 id="txt"></h1>
+
+        <script>
+            function sendRequest() {
+                var obj = new XMLHttpRequest();
+                obj.open("POST", "backend.php", true);
+                obj.setRequestHeader(
+                    "Content-Type",
+                    "application/x-www-form-urlencoded"
+                );
+                obj.onreadystatechange = () => {
+                    document.getElementById("txt").innerHTML = obj.responseText;
+                };
+                obj.send("username=rojasricor");
+            }
+        </script>
+    </body>
+</html>
